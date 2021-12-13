@@ -4,15 +4,27 @@
 #
 #    pip-compile --extra=ci --output-file=requirements/py3.9-ci-requirements.txt
 #
+alabaster==0.7.12
+    # via sphinx
 anyio==3.4.0
     # via starlette
+appdirs==1.4.4
+    # via black
 asgiref==3.4.1
     # via uvicorn
 assertpy==1.1
     # via feast (setup.py)
 attrs==21.2.0
-    # via pytest
+    # via
+    #   black
+    #   pytest
 avro==1.10.0
+    # via feast (setup.py)
+babel==2.9.1
+    # via sphinx
+backports.entry-points-selectable==1.1.1
+    # via virtualenv
+black==19.10b0
     # via feast (setup.py)
 boto3==1.17.112
     # via feast (setup.py)
@@ -26,23 +38,41 @@ certifi==2021.10.8
     # via
     #   minio
     #   requests
+cfgv==3.3.1
+    # via pre-commit
 charset-normalizer==2.0.8
     # via requests
 click==7.1.2
     # via
+    #   black
     #   feast (setup.py)
+    #   pip-tools
     #   uvicorn
 colorama==0.4.4
     # via feast (setup.py)
+coverage[toml]==6.2
+    # via pytest-cov
 deprecation==2.1.0
     # via testcontainers
 dill==0.3.4
     # via feast (setup.py)
+distlib==0.3.4
+    # via virtualenv
 docker==5.0.3
     # via
     #   feast (setup.py)
     #   testcontainers
+docutils==0.17.1
+    # via
+    #   sphinx
+    #   sphinx-rtd-theme
+execnet==1.9.0
+    # via pytest-xdist
 fastapi==0.70.0
+    # via feast (setup.py)
+filelock==3.4.0
+    # via virtualenv
+flake8==4.0.1
     # via feast (setup.py)
 google-api-core[grpc]==1.31.4
     # via
@@ -90,14 +120,22 @@ hiredis==2.0.0
     # via feast (setup.py)
 httptools==0.2.0
     # via uvicorn
+identify==2.4.0
+    # via pre-commit
 idna==3.3
     # via
     #   anyio
     #   requests
+imagesize==1.3.0
+    # via sphinx
 iniconfig==1.1.1
     # via pytest
-jinja2==3.0.3
+isort==5.10.1
     # via feast (setup.py)
+jinja2==3.0.3
+    # via
+    #   feast (setup.py)
+    #   sphinx
 jmespath==0.10.0
     # via
     #   boto3
@@ -108,14 +146,24 @@ libcst==0.3.23
     #   google-cloud-datastore
 markupsafe==2.0.1
     # via jinja2
+mccabe==0.6.1
+    # via flake8
 minio==7.1.0
     # via feast (setup.py)
 mmh3==3.0.0
     # via feast (setup.py)
 more-itertools==8.12.0
     # via pytest
+mypy==0.790
+    # via feast (setup.py)
 mypy-extensions==0.4.3
-    # via typing-inspect
+    # via
+    #   mypy
+    #   typing-inspect
+mypy-protobuf==1.24
+    # via feast (setup.py)
+nodeenv==1.6.0
+    # via pre-commit
 numpy==1.21.4
     # via
     #   pandas
@@ -126,10 +174,21 @@ packaging==21.3
     #   google-api-core
     #   google-cloud-bigquery
     #   pytest
+    #   sphinx
 pandas==1.3.4
     # via feast (setup.py)
+pathspec==0.9.0
+    # via black
+pep517==0.12.0
+    # via pip-tools
+pip-tools==6.4.0
+    # via feast (setup.py)
+platformdirs==2.4.0
+    # via virtualenv
 pluggy==0.13.1
     # via pytest
+pre-commit==2.16.0
+    # via feast (setup.py)
 proto-plus==1.19.6
     # via
     #   google-cloud-bigquery
@@ -142,9 +201,14 @@ protobuf==3.19.1
     #   google-cloud-bigquery
     #   googleapis-common-protos
     #   grpcio-reflection
+    #   mypy-protobuf
     #   proto-plus
 py==1.11.0
-    # via pytest
+    # via
+    #   pytest
+    #   pytest-forked
+py-cpuinfo==8.0.0
+    # via pytest-benchmark
 pyarrow==6.0.1
     # via feast (setup.py)
 pyasn1==0.4.8
@@ -153,13 +217,44 @@ pyasn1==0.4.8
     #   rsa
 pyasn1-modules==0.2.8
     # via google-auth
+pycodestyle==2.8.0
+    # via flake8
 pydantic==1.8.2
     # via
     #   fastapi
     #   feast (setup.py)
+pyflakes==2.4.0
+    # via flake8
+pygments==2.10.0
+    # via sphinx
 pyparsing==3.0.6
     # via packaging
 pytest==6.0.0
+    # via
+    #   feast (setup.py)
+    #   pytest-benchmark
+    #   pytest-cov
+    #   pytest-forked
+    #   pytest-lazy-fixture
+    #   pytest-mock
+    #   pytest-ordering
+    #   pytest-timeout
+    #   pytest-xdist
+pytest-benchmark==3.4.1
+    # via feast (setup.py)
+pytest-cov==3.0.0
+    # via feast (setup.py)
+pytest-forked==1.4.0
+    # via pytest-xdist
+pytest-lazy-fixture==0.6.3
+    # via feast (setup.py)
+pytest-mock==1.10.4
+    # via feast (setup.py)
+pytest-ordering==0.6
+    # via feast (setup.py)
+pytest-timeout==1.4.2
+    # via feast (setup.py)
+pytest-xdist==2.4.0
     # via feast (setup.py)
 python-dateutil==2.8.2
     # via
@@ -170,23 +265,28 @@ python-dotenv==0.19.2
     # via uvicorn
 pytz==2021.3
     # via
+    #   babel
     #   google-api-core
     #   pandas
 pyyaml==6.0
     # via
     #   feast (setup.py)
     #   libcst
+    #   pre-commit
     #   uvicorn
 redis==3.5.3
     # via redis-py-cluster
 redis-py-cluster==2.1.2
     # via feast (setup.py)
+regex==2021.11.10
+    # via black
 requests==2.26.0
     # via
     #   docker
     #   google-api-core
     #   google-cloud-bigquery
     #   google-cloud-storage
+    #   sphinx
 rsa==4.8
     # via google-auth
 s3transfer==0.4.2
@@ -199,8 +299,29 @@ six==1.16.0
     #   google-resumable-media
     #   grpcio
     #   python-dateutil
+    #   virtualenv
 sniffio==1.2.0
     # via anyio
+snowballstemmer==2.2.0
+    # via sphinx
+sphinx==4.3.1
+    # via
+    #   feast (setup.py)
+    #   sphinx-rtd-theme
+sphinx-rtd-theme==1.0.0
+    # via feast (setup.py)
+sphinxcontrib-applehelp==1.0.2
+    # via sphinx
+sphinxcontrib-devhelp==1.0.2
+    # via sphinx
+sphinxcontrib-htmlhelp==2.0.0
+    # via sphinx
+sphinxcontrib-jsmath==1.0.1
+    # via sphinx
+sphinxcontrib-qthelp==1.0.3
+    # via sphinx
+sphinxcontrib-serializinghtml==1.1.5
+    # via sphinx
 starlette==0.16.0
     # via fastapi
 tabulate==0.8.9
@@ -210,12 +331,24 @@ tenacity==8.0.1
 testcontainers==3.4.2
     # via feast (setup.py)
 toml==0.10.2
-    # via pytest
+    # via
+    #   black
+    #   pre-commit
+    #   pytest
+tomli==2.0.0
+    # via
+    #   coverage
+    #   pep517
 tqdm==4.62.3
     # via feast (setup.py)
+typed-ast==1.4.3
+    # via
+    #   black
+    #   mypy
 typing-extensions==4.0.1
     # via
     #   libcst
+    #   mypy
     #   pydantic
     #   typing-inspect
 typing-inspect==0.7.1
@@ -229,14 +362,19 @@ uvicorn[standard]==0.15.0
     # via feast (setup.py)
 uvloop==0.16.0
     # via uvicorn
+virtualenv==20.10.0
+    # via pre-commit
 watchgod==0.7
     # via uvicorn
 websocket-client==1.2.1
     # via docker
 websockets==10.1
     # via uvicorn
+wheel==0.37.0
+    # via pip-tools
 wrapt==1.13.3
     # via testcontainers
 
 # The following packages are considered to be unsafe in a requirements file:
+# pip
 # setuptools
