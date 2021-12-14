@@ -96,7 +96,9 @@ CI_REQUIRED = [
     "minio==7.1.0",
     #"mock==2.0.0",
     #"moto",
-    "mypy==0.790",
+    # Updated mypy to allow using newer typed-ast, as the old version was failing with an
+    # error: undefined symbol: _PyUnicode_DecodeUnicodeEscape
+    "mypy==0.910",
     "mypy-protobuf==1.24",
     "avro==1.10.0",
     #"gcsfs",

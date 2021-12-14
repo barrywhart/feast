@@ -154,7 +154,7 @@ mmh3==3.0.0
     # via feast (setup.py)
 more-itertools==8.12.0
     # via pytest
-mypy==0.790
+mypy==0.910
     # via feast (setup.py)
 mypy-extensions==0.4.3
     # via
@@ -333,6 +333,7 @@ testcontainers==3.4.2
 toml==0.10.2
     # via
     #   black
+    #   mypy
     #   pre-commit
     #   pytest
 tomli==2.0.0
@@ -341,10 +342,8 @@ tomli==2.0.0
     #   pep517
 tqdm==4.62.3
     # via feast (setup.py)
-typed-ast==1.4.3
-    # via
-    #   black
-    #   mypy
+typed-ast==1.5.1
+    # via black
 typing-extensions==4.0.1
     # via
     #   libcst
